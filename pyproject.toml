@@ -32,17 +32,11 @@ dependencies = [
     "gradio==4.44.1",
     "gradio_litmodel3d==0.0.1",
     "toml",
-    "nvidia", # this is a namespace, probably not installable, might need clarification
-]
-
-[project.optional-dependencies]
-basic = [
     "pillow",
     "imageio",
     "imageio-ffmpeg",
     "easydict",
     "opencv-python-headless",
-    "scipy", # duplicated from dependencies, remove here
     "ninja",
     "rembg",
     "onnxruntime",
@@ -53,20 +47,13 @@ basic = [
     "igraph",
     "transformers",
     "git+https://github.com/EasternJournalist/utils3d.git@9a4eb15e4021b67b12c460c7057d642626897ec8",
-]
-xformers = [] # versions will be handled in setup.py
-flash_attn = [] # versions and platform logic in setup.py
-diffoctreerast = [] # platform logic in setup.py
-vox2seq = [] # platform logic in setup.py
-spconv = [] # platform logic in setup.py
-mipgaussian = [] # platform logic in setup.py
-kaolin = [] # versions and platform logic in setup.py
-nvdiffrast = [] # already handled in tool.uv.sources, but keep extra for installation trigger
-demo = [
-    "gradio==4.44.1", # duplicated from dependencies, remove here
-    "gradio_litmodel3d==0.0.1", # duplicated from dependencies, remove here
+    "xformers",
+    "flash_attn"
 ]
 
+
+
+ 
 
 [[tool.uv.index]]
 name = "pytorch-cu118"
@@ -76,3 +63,6 @@ explicit = true
 [tool.uv.sources]
 nvdiffrast = { git = "https://github.com/NVlabs/nvdiffrast.git" }
 diff-gaussian-rasterization = { git = "https://github.com/autonomousvision/mip-splatting.git", subdirectory = "submodules/diff-gaussian-rasterization/" }
+vox2seq = { git = "https://github.com/neor164/TRELLIS.git", subdirectory = "extensions/vox2seq" }
+
+diffoctreerast = { git =  "https://github.com/JeffreyXiang/diffoctreerast.git" }
