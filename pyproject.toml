@@ -1,0 +1,73 @@
+[project]
+name = "trellis"
+
+version = "0.1.0"
+
+readme = "README.md"
+requires-python = ">=3.10, <=3.12"
+
+dependencies = [
+    "matplotlib",
+    "scipy",
+    "torch==2.4.0",
+    "torchvision>=0.19.0",
+    "albumentations",
+    "pyrr",
+    "simplejson",
+    "tqdm",
+    "opencv-python",
+    "numpy",
+    "scikit-learn",
+    "setuptools>=49.6.0",
+    "frozendict",
+    "requests",
+    "httpx",
+    "opencv-python", # duplicated, remove one
+    "simplejson", # duplicated, remove one
+    "gradio==4.44.1",
+    "gradio_litmodel3d==0.0.1",
+    "nvidia", # this is a namespace, probably not installable, might need clarification
+]
+
+[project.optional-dependencies]
+basic = [
+    "pillow",
+    "imageio",
+    "imageio-ffmpeg",
+    "easydict",
+    "opencv-python-headless",
+    "scipy", # duplicated from dependencies, remove here
+    "ninja",
+    "rembg",
+    "onnxruntime",
+    "trimesh",
+    "xatlas",
+    "pyvista",
+    "pymeshfix",
+    "igraph",
+    "transformers",
+    "toml",
+    "git+https://github.com/EasternJournalist/utils3d.git@9a4eb15e4021b67b12c460c7057d642626897ec8",
+]
+xformers = [] # versions will be handled in setup.py
+flash_attn = [] # versions and platform logic in setup.py
+diffoctreerast = [] # platform logic in setup.py
+vox2seq = [] # platform logic in setup.py
+spconv = [] # platform logic in setup.py
+mipgaussian = [] # platform logic in setup.py
+kaolin = [] # versions and platform logic in setup.py
+nvdiffrast = [] # already handled in tool.uv.sources, but keep extra for installation trigger
+demo = [
+    "gradio==4.44.1", # duplicated from dependencies, remove here
+    "gradio_litmodel3d==0.0.1", # duplicated from dependencies, remove here
+]
+
+
+[[tool.uv.index]]
+name = "pytorch-cu118"
+url = "https://download.pytorch.org/whl/cu118"
+explicit = true
+
+[tool.uv.sources]
+nvdiffrast = { git = "https://github.com/NVlabs/nvdiffrast.git" }
+diff-gaussian-rasterization = { git = "https://github.com/autonomousvision/mip-splatting.git", subdirectory = "submodules/diff-gaussian-rasterization/" }
