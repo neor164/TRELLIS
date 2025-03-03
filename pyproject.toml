@@ -26,6 +26,7 @@ dependencies = [
     "simplejson", # duplicated, remove one
     "gradio==4.44.1",
     "gradio_litmodel3d==0.0.1",
+    "toml",
     "nvidia", # this is a namespace, probably not installable, might need clarification
 ]
 
@@ -46,8 +47,6 @@ basic = [
     "pymeshfix",
     "igraph",
     "transformers",
-    "toml",
-    "pydantic",
     "git+https://github.com/EasternJournalist/utils3d.git@9a4eb15e4021b67b12c460c7057d642626897ec8",
 ]
 xformers = [] # versions will be handled in setup.py
