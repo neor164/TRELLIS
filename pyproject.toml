@@ -4,12 +4,9 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "trellis"
-
 version = "0.1.0"
-
 readme = "README.md"
 requires-python = ">=3.10, <=3.12"
-
 
 dependencies = [
     "matplotlib",
@@ -32,6 +29,14 @@ dependencies = [
     "gradio==4.44.1",
     "gradio_litmodel3d==0.0.1",
     "toml",
+    # Removed Git URL from here
+    # "git+https://github.com/EasternJournalist/utils3d.git@9a4eb15e4021b67b12c460c7057d642626897ec8",
+    # "xformers", # moved to basic as optional
+    # "flash_attn" # moved to basic as optional
+]
+
+[project.optional-dependencies]
+basic = [
     "pillow",
     "imageio",
     "imageio-ffmpeg",
@@ -46,14 +51,11 @@ dependencies = [
     "pymeshfix",
     "igraph",
     "transformers",
-    "git+https://github.com/EasternJournalist/utils3d.git@9a4eb15e4021b67b12c460c7057d642626897ec8",
-    "xformers",
-    "flash_attn"
+    "git+https://github.com/EasternJournalist/utils3d.git@9a4eb15e4021b67b12c460c7057d642626897ec8", # Moved Git URL here
+    "xformers", # moved here as optional
+    "flash_attn" # moved here as optional
 ]
 
-
-
- 
 
 [[tool.uv.index]]
 name = "pytorch-cu118"
@@ -64,5 +66,4 @@ explicit = true
 nvdiffrast = { git = "https://github.com/NVlabs/nvdiffrast.git" }
 diff-gaussian-rasterization = { git = "https://github.com/autonomousvision/mip-splatting.git", subdirectory = "submodules/diff-gaussian-rasterization/" }
 vox2seq = { git = "https://github.com/neor164/TRELLIS.git", subdirectory = "extensions/vox2seq" }
-
 diffoctreerast = { git =  "https://github.com/JeffreyXiang/diffoctreerast.git" }
