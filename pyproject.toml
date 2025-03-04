@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools", "wheel", "toml"]
+requires = ["setuptools", "wheel", "toml", "torch"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -29,14 +29,6 @@ dependencies = [
     "gradio==4.44.1",
     "gradio_litmodel3d==0.0.1",
     "toml",
-    # Removed Git URL from here
-    # "git+https://github.com/EasternJournalist/utils3d.git@9a4eb15e4021b67b12c460c7057d642626897ec8",
-    # "xformers", # moved to basic as optional
-    # "flash_attn" # moved to basic as optional
-]
-
-[project.optional-dependencies]
-basic = [
     "pillow",
     "imageio",
     "imageio-ffmpeg",
@@ -51,12 +43,19 @@ basic = [
     "pymeshfix",
     "igraph",
     "transformers",
-    "git+https://github.com/EasternJournalist/utils3d.git@9a4eb15e4021b67b12c460c7057d642626897ec8", # Moved Git URL here
-    "xformers", # moved here as optional
-    "flash_attn" # moved here as optional
+    # Removed Git URL from here
+    # "xformers", # moved to basic as optional
+    # "flash_attn" # moved to basic as optional
 ]
 
+# ADD THIS SECTION:
+[tool.setuptools.packages.find]  # Correct: packages.find
+include = ["trellis*"]        # Include "trellis" and subpackages
+[project.optional-dependencies]
+basic = [    "flash_attn",
+    "xformers" # moved here as optional
 
+]
 [[tool.uv.index]]
 name = "pytorch-cu118"
 url = "https://download.pytorch.org/whl/cu118"
@@ -67,3 +66,4 @@ nvdiffrast = { git = "https://github.com/NVlabs/nvdiffrast.git" }
 diff-gaussian-rasterization = { git = "https://github.com/autonomousvision/mip-splatting.git", subdirectory = "submodules/diff-gaussian-rasterization/" }
 vox2seq = { git = "https://github.com/neor164/TRELLIS.git", subdirectory = "extensions/vox2seq" }
 diffoctreerast = { git =  "https://github.com/JeffreyXiang/diffoctreerast.git" }
+utils3d = { git = "ttps://github.com/EasternJournalist/utils3d.git", rev = "9a4eb15e4021b67b12c460c7057d642626897ec8" }
